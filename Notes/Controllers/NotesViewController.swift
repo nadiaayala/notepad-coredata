@@ -60,7 +60,7 @@ class NotesViewController:  UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             
             destinationVC.selectedNote = self.notesArray[indexPath.row]
-            
+            destinationVC.notesArray = notesArray
         }
         
     }

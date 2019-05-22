@@ -74,7 +74,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="tfd-a4-44B">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="YSu-jy-qad"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="YSu-jy-qad">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="2IP-gR-lGj" id="5z6-Cg-9pZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
