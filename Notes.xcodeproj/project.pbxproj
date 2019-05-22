@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		08EDA15B22948DFC00527C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA15A22948DFC00527C37 /* AppDelegate.swift */; };
-		08EDA15D22948DFC00527C37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA15C22948DFC00527C37 /* ViewController.swift */; };
+		08EDA15D22948DFC00527C37 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA15C22948DFC00527C37 /* NotesViewController.swift */; };
 		08EDA16022948DFC00527C37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08EDA15E22948DFC00527C37 /* Main.storyboard */; };
 		08EDA16322948DFC00527C37 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA16122948DFC00527C37 /* Notes.xcdatamodeld */; };
 		08EDA16522948DFF00527C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08EDA16422948DFF00527C37 /* Assets.xcassets */; };
 		08EDA16822948DFF00527C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08EDA16622948DFF00527C37 /* LaunchScreen.storyboard */; };
+		08EDA173229535E000527C37 /* SelectedNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA172229535E000527C37 /* SelectedNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08EDA15722948DFC00527C37 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08EDA15A22948DFC00527C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		08EDA15C22948DFC00527C37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		08EDA15C22948DFC00527C37 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		08EDA15F22948DFC00527C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08EDA16222948DFC00527C37 /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		08EDA16422948DFF00527C37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08EDA16722948DFF00527C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08EDA16922948DFF00527C37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08EDA172229535E000527C37 /* SelectedNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		08EDA15922948DFC00527C37 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				08EDA17122948E3600527C37 /* Model */,
+				08EDA17022948E1A00527C37 /* View */,
+				08EDA16F22948E0900527C37 /* Controllers */,
 				08EDA15A22948DFC00527C37 /* AppDelegate.swift */,
-				08EDA15C22948DFC00527C37 /* ViewController.swift */,
-				08EDA15E22948DFC00527C37 /* Main.storyboard */,
 				08EDA16422948DFF00527C37 /* Assets.xcassets */,
 				08EDA16622948DFF00527C37 /* LaunchScreen.storyboard */,
 				08EDA16922948DFF00527C37 /* Info.plist */,
-				08EDA16122948DFC00527C37 /* Notes.xcdatamodeld */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		08EDA16F22948E0900527C37 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				08EDA15C22948DFC00527C37 /* NotesViewController.swift */,
+				08EDA172229535E000527C37 /* SelectedNoteViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		08EDA17022948E1A00527C37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08EDA15E22948DFC00527C37 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08EDA17122948E3600527C37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08EDA16122948DFC00527C37 /* Notes.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08EDA15D22948DFC00527C37 /* ViewController.swift in Sources */,
+				08EDA15D22948DFC00527C37 /* NotesViewController.swift in Sources */,
 				08EDA16322948DFC00527C37 /* Notes.xcdatamodeld in Sources */,
+				08EDA173229535E000527C37 /* SelectedNoteViewController.swift in Sources */,
 				08EDA15B22948DFC00527C37 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
