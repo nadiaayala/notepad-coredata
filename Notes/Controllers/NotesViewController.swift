@@ -65,6 +65,22 @@ class NotesViewController:  UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            let deletedItem = self.notesArray[indexPath.row].title
+            self.notesArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            print(self.notesArray)
+            //            self.saveItems()
+            self.deleteNote(noteToDelete: deletedItem!)
+        }
+        
+        return [delete]
+        
+    }
+    
     
     //MARK: - Add new notes
     
@@ -133,6 +149,29 @@ class NotesViewController:  UITableViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    func deleteNote(noteToDelete: String){
+        let fetchRequest = NSFetchRequest<Note>(entityName: "Note")
+        fetchRequest.predicate = NSPredicate(format: "title = %@", noteToDelete)
+        
+        do {
+            let test = try self.context.fetch(fetchRequest)
+            
+            let objectToDelete = test[0] as NSManagedObject
+            context.delete(objectToDelete)
+            
+            do{
+                try context.save()
+            }
+            catch{
+                print("Error: \(error)")
+            }
+        }
+            
+        catch {
+            print("Error: \(error)")
+        }
     }
     
     
