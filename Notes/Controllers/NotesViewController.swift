@@ -11,6 +11,10 @@ import CoreData
 
 class NotesViewController:  UITableViewController {
     
+    
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        navigationItem.rightBarButtonItem = editButtonItem
+    }
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var notesArray: [Note] = [Note]()
@@ -47,15 +51,17 @@ class NotesViewController:  UITableViewController {
         
         let indexPath = tableView.indexPathForSelectedRow
         
+//        let selectedNote = indexPath
         
-        performSegue(withIdentifier: "goToSelectedNote", sender: "self")
+        
+        performSegue(withIdentifier: "goToNote", sender: "self")
         
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destinationVC = segue.destination as! SelectedNoteViewController
+        let destinationVC = segue.destination as! ShowNoteViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
             
@@ -78,6 +84,22 @@ class NotesViewController:  UITableViewController {
         }
         
         return [delete]
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+//            print(notesArray![indexPath.row].title!)
+            self.deleteNote(noteToDelete: notesArray[indexPath.row].title!)
+            self.notesArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.loadItems()
+            
+            
+            
+        }
+        
         
     }
     

@@ -14,6 +14,7 @@
 		08EDA16522948DFF00527C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08EDA16422948DFF00527C37 /* Assets.xcassets */; };
 		08EDA16822948DFF00527C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08EDA16622948DFF00527C37 /* LaunchScreen.storyboard */; };
 		08EDA173229535E000527C37 /* SelectedNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA172229535E000527C37 /* SelectedNoteViewController.swift */; };
+		08EDA1752295BC4400527C37 /* ShowNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDA1742295BC4400527C37 /* ShowNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		08EDA16722948DFF00527C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08EDA16922948DFF00527C37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08EDA172229535E000527C37 /* SelectedNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNoteViewController.swift; sourceTree = "<group>"; };
+		08EDA1742295BC4400527C37 /* ShowNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				08EDA15C22948DFC00527C37 /* NotesViewController.swift */,
 				08EDA172229535E000527C37 /* SelectedNoteViewController.swift */,
+				08EDA1742295BC4400527C37 /* ShowNoteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				08EDA15D22948DFC00527C37 /* NotesViewController.swift in Sources */,
 				08EDA16322948DFC00527C37 /* Notes.xcdatamodeld in Sources */,
+				08EDA1752295BC4400527C37 /* ShowNoteViewController.swift in Sources */,
 				08EDA173229535E000527C37 /* SelectedNoteViewController.swift in Sources */,
 				08EDA15B22948DFC00527C37 /* AppDelegate.swift in Sources */,
 			);

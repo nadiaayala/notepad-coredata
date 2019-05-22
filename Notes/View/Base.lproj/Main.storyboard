@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,60 +33,55 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Notepad" id="eD2-Em-mhs">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="MJD-ii-jhm">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="add" id="MJD-ii-jhm">
                             <connections>
-                                <action selector="addButtonPressed:" destination="wKX-4X-3R9" id="qgZ-Gh-OhH"/>
+                                <action selector="addButtonPressed:" destination="wKX-4X-3R9" id="pes-Yc-uiR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="HFi-RZ-bZm">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="wKX-4X-3R9" id="yhl-Gk-QKX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="2IP-gR-lGj" kind="show" identifier="goToSelectedNote" id="RHc-ej-glV"/>
+                        <segue destination="pVl-ED-0xW" kind="show" identifier="goToNote" id="8iL-Sc-Sj3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0d-Cl-hdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1981.5999999999999" y="778.56071964017997"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="5qQ-i3-oCg">
+        <!--Notepad-->
+        <scene sceneID="Ihb-sI-9uz">
             <objects>
-                <viewController id="2IP-gR-lGj" customClass="SelectedNoteViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WC0-QC-0z7" customClass="Sele">
+                <tableViewController id="pVl-ED-0xW" customClass="ShowNoteViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tsM-KA-oho">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wjt-Zn-yMJ">
-                                <rect key="frame" x="15" y="119" width="384" height="679"/>
-                                <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="5Xm-Oy-Znc" firstAttribute="trailing" secondItem="Wjt-Zn-yMJ" secondAttribute="trailing" constant="15" id="8Zq-mW-SXJ"/>
-                            <constraint firstItem="Wjt-Zn-yMJ" firstAttribute="leading" secondItem="5Xm-Oy-Znc" secondAttribute="leading" constant="15" id="AIE-xa-8vR"/>
-                            <constraint firstItem="Wjt-Zn-yMJ" firstAttribute="top" secondItem="5Xm-Oy-Znc" secondAttribute="top" constant="31" id="Os2-ow-7pa"/>
-                            <constraint firstItem="5Xm-Oy-Znc" firstAttribute="bottom" secondItem="Wjt-Zn-yMJ" secondAttribute="bottom" constant="15" id="TYP-Dv-i8E"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5Xm-Oy-Znc"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="TopLeft" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="674" id="PdL-J8-mDx">
+                                <rect key="frame" x="0.0" y="28" width="414" height="674"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PdL-J8-mDx" id="uvB-FE-4R0">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="673.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pVl-ED-0xW" id="v3k-cv-Dnj"/>
+                            <outlet property="delegate" destination="pVl-ED-0xW" id="c5M-BB-rrx"/>
+                        </connections>
+                    </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="tfd-a4-44B">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="YSu-jy-qad">
-                            <connections>
-                                <action selector="editButtonPressed:" destination="2IP-gR-lGj" id="5z6-Cg-9pZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Notepad" id="lJS-3d-Vjh"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="textView" destination="Wjt-Zn-yMJ" id="uBb-Dc-wC6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U9R-YJ-leC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6z-L2-08o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792.8000000000002" y="779.46026986506752"/>
+            <point key="canvasLocation" x="2811.594202898551" y="775.44642857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="28Q-O5-0eu">
