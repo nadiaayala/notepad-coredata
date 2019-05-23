@@ -11,13 +11,7 @@ import CoreData
 
 class NotesViewController:  UITableViewController {
     
-    
-    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-       
-    }
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var notesArray: [Note] = [Note]()
 
     override func viewDidLoad() {
@@ -29,8 +23,12 @@ class NotesViewController:  UITableViewController {
         loadItems()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
-    
+
     
     //MARK: - TableView methods
     

@@ -15,6 +15,8 @@ class ShowNoteViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
+    
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var note = ""
