@@ -53,7 +53,7 @@
             </objects>
             <point key="canvasLocation" x="1981.5999999999999" y="778.56071964017997"/>
         </scene>
-        <!--Show Note View Controller-->
+        <!--Notepad-->
         <scene sceneID="CPm-xM-fPu">
             <objects>
                 <viewController id="nWU-oU-Z8w" customClass="ShowNoteViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,38 +61,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K8f-6M-yT0">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <color key="backgroundColor" red="0.92145264149999995" green="0.4243791308" blue="0.42461501689999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="sectionIndexBackgroundColor" red="0.73137792229999998" green="0.39627073140000002" blue="0.76592859459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" id="GtS-Ex-PAe">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GtS-Ex-PAe" id="Q4y-HV-Krh">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.6870775804" green="0.37351070949999998" blue="0.72216053300000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-PY-b5v">
+                                <rect key="frame" x="0.0" y="64" width="414" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="bottom" secondItem="XZS-Mg-5W8" secondAttribute="bottom" id="Djb-E8-rOV"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="top" secondItem="XZS-Mg-5W8" secondAttribute="top" id="OV2-w3-Ken"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="trailing" secondItem="XZS-Mg-5W8" secondAttribute="trailing" id="OZl-Wn-yHd"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="leading" secondItem="XZS-Mg-5W8" secondAttribute="leading" id="XuS-TL-108"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="leading" secondItem="XZS-Mg-5W8" secondAttribute="leading" id="aJf-jE-pjz"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="trailing" secondItem="XZS-Mg-5W8" secondAttribute="trailing" id="nvi-T0-Cio"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="top" secondItem="XZS-Mg-5W8" secondAttribute="top" id="pN8-jW-J2l"/>
-                            <constraint firstItem="K8f-6M-yT0" firstAttribute="bottom" secondItem="XZS-Mg-5W8" secondAttribute="bottom" id="rYN-Sq-zz8"/>
+                            <constraint firstItem="EPF-PY-b5v" firstAttribute="top" secondItem="VD2-Oa-9XF" secondAttribute="top" constant="64" id="RoO-Rv-JL5"/>
+                            <constraint firstItem="EPF-PY-b5v" firstAttribute="leading" secondItem="VD2-Oa-9XF" secondAttribute="leading" id="iDM-9r-ZLt"/>
+                            <constraint firstAttribute="trailing" secondItem="EPF-PY-b5v" secondAttribute="trailing" id="iSW-02-Stx"/>
+                            <constraint firstAttribute="bottom" secondItem="EPF-PY-b5v" secondAttribute="bottom" constant="512" id="lla-za-fhc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XZS-Mg-5W8"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Notepad" id="cQR-E4-IYn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="SAh-KC-OmY">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="nWU-oU-Z8w" id="PtC-xH-Zyy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="K8f-6M-yT0" id="vo7-Gm-x2D"/>
+                        <outlet property="textView" destination="EPF-PY-b5v" id="Asf-Jk-lNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UB6-mR-mFE" userLabel="First Responder" sceneMemberID="firstResponder"/>

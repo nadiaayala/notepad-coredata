@@ -13,8 +13,9 @@ class NotesViewController:  UITableViewController {
     
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-        navigationItem.rightBarButtonItem = editButtonItem
+       
     }
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var notesArray: [Note] = [Note]()
@@ -23,13 +24,13 @@ class NotesViewController:  UITableViewController {
         
         //To open the database
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        
         super.viewDidLoad()
-        
+        navigationItem.rightBarButtonItem = editButtonItem
         loadItems()
-        
     }
+    
+    
+    
     
     //MARK: - TableView methods
     
@@ -54,33 +55,6 @@ class NotesViewController:  UITableViewController {
     
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("Clickeeeeeed")
-        
-        let indexPath = tableView.indexPathForSelectedRow
-        
-        
-//        let selectedNote = indexPath
-        
-        
-        performSegue(withIdentifier: "goToNote", sender: "self")
-        
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destinationVC = segue.destination as! ShowNoteViewController
-        
-        if let indexPath = tableView.indexPathForSelectedRow {
-            
-            destinationVC.selectedNote = self.notesArray[indexPath.row]
-            destinationVC.notesArray = notesArray
-        }
-        
-    }
-    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
@@ -97,30 +71,41 @@ class NotesViewController:  UITableViewController {
         
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
-//            print(notesArray![indexPath.row].title!)
             self.deleteNote(noteToDelete: notesArray[indexPath.row].title!)
             self.notesArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.loadItems()
-            
-            
-            
         }
-        
-        
+       }
+    
+    
+    //MARK: - PERFORM SEGUE
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToNote", sender: "self")
     }
     
-//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-//
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationVC = segue.destination as! ShowNoteViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            
+            destinationVC.selectedNote = self.notesArray[indexPath.row]
+            destinationVC.notesArray = notesArray
+        }
+        
+    }
+
     
     //MARK: - Add new notes
     
-
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         
@@ -150,8 +135,9 @@ class NotesViewController:  UITableViewController {
     }
     
     
-    //MARK: - Manage data
     
+    
+    //MARK: - Manage data
     
     func saveItems(){
         
@@ -173,9 +159,6 @@ class NotesViewController:  UITableViewController {
         
         
         let request : NSFetchRequest<Note> = Note.fetchRequest()
-        
-      
-        
         do{
             //The output for this method will be an array of Items that is stored in our persistent container
             notesArray =  try context.fetch(request)
@@ -186,6 +169,8 @@ class NotesViewController:  UITableViewController {
         
         tableView.reloadData()
     }
+    
+    
     
     func deleteNote(noteToDelete: String){
         let fetchRequest = NSFetchRequest<Note>(entityName: "Note")
@@ -210,10 +195,7 @@ class NotesViewController:  UITableViewController {
         }
     }
     
-    
-    
-    
-    }
+}
 
 
     
