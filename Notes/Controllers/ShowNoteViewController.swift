@@ -9,14 +9,17 @@
 import UIKit
 import CoreData
 
-class ShowNoteViewController: UITableViewController {
-    
-  
+class ShowNoteViewController: UIViewController {
     
 
+
+    @IBOutlet weak var tableView: UITableView!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var note = ""
+    
+    var indexPathToEdit: Int = 0
     
 //    var noteForCell = String
     
@@ -37,45 +40,54 @@ class ShowNoteViewController: UITableViewController {
             }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
-        
-//        let note = notesArray![indexPath.row]
-        
-        let note = notesArray?.first(where: {$0.title == self.note} )
-        
-        cell.textLabel?.text = note?.title
-        
-       
-        
-        return cell
-        
-    }
-    
-    
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: true)
-        
-        if editing {
-            print("Are we editing NOW: \(isEditing)")
-            
-            
-        } else {
-            print("Are we editing: \(isEditing)")
-            loadItems()
-            
-        }
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("selected")
+////        setEditing(true, animated: true)
+//        print("This cell from the chat list was selected: \(indexPath.row)")
+//        indexPathToEdit = indexPath.row
+//        print("aaaaa")
+//    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
+//
+////        let note = notesArray![indexPath.row]
+//
+//        let note = notesArray?.first(where: {$0.title == self.note} )
+//
+//        cell.textLabel?.text = note?.title
+//
+//
+//
+//        return cell
+//
+//    }
+//
+//
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+//
+//
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        print("a")
+//
+////        if indexPath.section == 0 {
+//
+//            if (indexPath.row == 0){
+//                print("b")
+//                return true
+////            }
+//        }
+//        return false
+//    }
+
     
     
     func saveItems(){
@@ -135,7 +147,8 @@ class ShowNoteViewController: UITableViewController {
         
         tableView.reloadData()
     }
-    
-    
-    
 }
+    
+    
+    
+

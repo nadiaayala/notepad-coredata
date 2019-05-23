@@ -24,6 +24,7 @@ class NotesViewController:  UITableViewController {
         //To open the database
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
+        
         super.viewDidLoad()
         
         loadItems()
@@ -40,6 +41,10 @@ class NotesViewController:  UITableViewController {
         
         cell.textLabel?.text = note.title
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.lightGray
+        cell.selectedBackgroundView = backgroundView
+        
         return cell
     }
     
@@ -47,9 +52,14 @@ class NotesViewController:  UITableViewController {
         return notesArray.count
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print("Clickeeeeeed")
+        
         let indexPath = tableView.indexPathForSelectedRow
+        
         
 //        let selectedNote = indexPath
         
@@ -103,6 +113,10 @@ class NotesViewController:  UITableViewController {
         
     }
     
+//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
+//
     
     //MARK: - Add new notes
     
