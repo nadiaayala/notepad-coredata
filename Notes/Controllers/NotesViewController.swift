@@ -99,6 +99,9 @@ class NotesViewController:  UITableViewController {
             
             destinationVC.selectedNote = self.notesArray[indexPath.row]
             destinationVC.notesArray = notesArray
+            destinationVC.indexPathForCell = indexPath.row
+            
+            
         }
         
     }

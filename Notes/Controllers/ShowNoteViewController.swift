@@ -15,35 +15,11 @@ class ShowNoteViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
-//    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-//
-//        let button =  sender
-//
-//        if isEditing == true {
-//            print("is editing")
-//        }
-//        else {
-//            print("äaaaaaa")
-//        }
-//
-//        if button.title == "Edit"{
-//            textView.isEditable = true
-//            textView.becomeFirstResponder()
-//        }
-//        else if button.title == "Done"{
-//            textView.isEditable = false
-//            textView.resignFirstResponder()
-//        }
-//
-//
-//    }
-//
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var note = ""
     
-    var indexPathToEdit: Int = 0
+   
     
 //    var noteForCell = String
     
@@ -63,10 +39,18 @@ class ShowNoteViewController: UIViewController {
                 }
             }
     
+    var indexPathForCell: Int?{
+        didSet{
+            
+            print(indexPathForCell)
+        }
+    }
+    
     override func viewDidLoad() {
         if note == selectedNote?.title!{
             textView.text = note
         }
+      
         
         navigationItem.rightBarButtonItem = editButtonItem
       
@@ -85,6 +69,7 @@ class ShowNoteViewController: UIViewController {
              print("not ediitng")
             textView.isEditable = false
             textView.resignFirstResponder()
+            saveItems()
         }
     }
     
@@ -92,20 +77,20 @@ class ShowNoteViewController: UIViewController {
 
     
     
-//    func saveItems(){
+    func saveItems(){
+
+
+        do {
+            try self.context.save()
+        }
+        catch{
+            print("Error saving context \(error)")
+        }
+        notesArray![indexPathForCell!].title = textView.text
+        print(notesArray)
 //
-//
-//        do {
-//            try self.context.save()
-//        }
-//        catch{
-//            print("Error saving context \(error)")
-//        }
-//
-//        self.tableView.reloadData()
-//        print(notesArray!)
-//
-//    }
+    }
+
     
 //    func deleteNote(noteToDelete: String){
 //        let fetchRequest = NSFetchRequest<Note>(entityName: "Note")
